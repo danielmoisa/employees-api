@@ -1,11 +1,16 @@
 package com.danielmoisa.springapi.controllers;
 
 import com.danielmoisa.springapi.entities.Department;
+import com.danielmoisa.springapi.errors.NotFoundException;
 import com.danielmoisa.springapi.services.DepartmentService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.validation.Valid;
+import java.io.NotActiveException;
 import java.util.List;
 
 @RestController
@@ -14,8 +19,11 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
+    private final Logger LOGGER =
+            LoggerFactory.getLogger(DepartmentController.class);
     @PostMapping("")
     public Department saveDepartment(@Valid @RequestBody Department department) {
+        LOGGER.info("New department was created!");
         return departmentService.saveDepartment(department);
     }
 
@@ -33,7 +41,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Department singleDepartment(@PathVariable("id") Long departmentId) {
+    public Department singleDepartment(@PathVariable("id") Long departmentId) throws NotFoundException {
         return departmentService.fetchSingleDepartment(departmentId);
     }
 
