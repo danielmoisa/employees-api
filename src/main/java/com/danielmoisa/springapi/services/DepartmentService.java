@@ -5,11 +5,14 @@ import com.danielmoisa.springapi.entities.Department;
 import java.util.List;
 
 public interface DepartmentService {
-    public Department saveDepartment(Department department);
+    Department saveDepartment(Department department);
 
-    public List<Department> fetchDepartmentList();
+    List<Department> fetchDepartmentList();
 
-    public Department fetchSingleDepartment(Long departmentId);
+    Department fetchSingleDepartment(Long departmentId);
 
-    public void deleteDepartmentById(Long departmentId);
+    void deleteDepartmentById(Long departmentId);
+
+    Department updateDepartment(Department department, Long departmentId);
+
 }
