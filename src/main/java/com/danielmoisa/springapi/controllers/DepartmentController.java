@@ -3,6 +3,7 @@ package com.danielmoisa.springapi.controllers;
 import com.danielmoisa.springapi.entities.Department;
 import com.danielmoisa.springapi.errors.NotFoundException;
 import com.danielmoisa.springapi.services.DepartmentService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/departments")
 public class DepartmentController {
-    @Autowired
     private final DepartmentService departmentService;
 
     private final Logger LOGGER =
