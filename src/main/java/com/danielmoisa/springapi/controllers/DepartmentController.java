@@ -15,10 +15,15 @@ import java.util.List;
 @RequestMapping("/departments")
 public class DepartmentController {
     @Autowired
-    private DepartmentService departmentService;
+    private final DepartmentService departmentService;
 
     private final Logger LOGGER =
             LoggerFactory.getLogger(DepartmentController.class);
+
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
+    }
+
     @PostMapping("")
     public Department saveDepartment(@Valid @RequestBody Department department) {
         LOGGER.info("New department was created!");
